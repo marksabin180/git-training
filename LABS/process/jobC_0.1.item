@@ -154,12 +154,41 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tSAPDSOOutput_1"/>
   </node>
+  <node componentName="tStem" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="640" posY="64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tStem_1" show="false"/>
+    <elementParameter field="TABLE" name="ALGORITHM_SETTING"/>
+    <elementParameter field="LABEL" name="NOTICE" value="(Note: only String type column is available)"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tStem_1"/>
+  </node>
+  <node componentName="tIntervalMatch" componentVersion="0.103" offsetLabelX="0" offsetLabelY="0" posX="736" posY="192">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tIntervalMatch_1" show="false"/>
+    <elementParameter field="PREV_COLUMN_LIST" name="MAIN_COLUMN" value=""/>
+    <elementParameter field="LOOKUP_COLUMN_LIST" name="LOOKUP_MIN" value=""/>
+    <elementParameter field="CHECK" name="LOOKUP_MIN_BOUNDS" value="true"/>
+    <elementParameter field="LOOKUP_COLUMN_LIST" name="LOOKUP_MAX" value=""/>
+    <elementParameter field="CHECK" name="LOOKUP_MAX_BOUNDS" value="false"/>
+    <elementParameter field="LOOKUP_COLUMN_LIST" name="LOOKUP_COLUMN" value=""/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tIntervalMatch_1">
+      <column defaultValue="" key="false" length="255" name="LOOKUP" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tSAPBWInput_1" offsetLabelX="0" offsetLabelY="0" source="tSAPBWInput_1" target="tSAPDSOOutput_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
   </connection>
+  <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tStem_1" offsetLabelX="0" offsetLabelY="0" source="tStem_1" target="tIntervalMatch_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row2" show="false"/>
+  </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tSAPBWInput_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tStem_1" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
